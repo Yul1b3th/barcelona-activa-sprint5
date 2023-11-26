@@ -1,0 +1,37 @@
+<!-- card-slider.component.html -->
+
+
+<div style="">
+  <div class="card"
+    style="width: 20rem;overflow: hidden; margin: auto;heig0ht: 400px; min-height: 600px; position: relative;">
+
+    <div [@animSlider]="counter" style="">
+      <ng-container *ngFor="let img of onBoardingSteps; let i=index" style="">
+        <div *ngIf="i===counter" style="">
+          <div class="py-3"><img [src]="onBoardingSteps[counter].img" alt="Image" class="img-fluid py-5"
+              style="max-height: 312px;"></div>
+          <h3>{{ onBoardingSteps[counter].title }}</h3>
+          <p>{{ onBoardingSteps[counter].descripcion }}</p>
+        </div>
+      </ng-container>
+
+    </div>
+
+    <div style="margin-top: auto;">
+      <button type="button" (click)="onPrevious()" [disabled]="counter===0">Previous</button>
+      <button type="button" (click)="onNext()"
+        [disabled]="this.counter == this.onBoardingSteps.length - 1">Next</button>
+    </div>
+  </div>
+</div>
+
+
+<!-- <button type="button" (click)="onPrevious()" [disabled]="counter===0">Previous</button>
+<button type="button" (click)="onNext()" [disabled]="this.counter == this.onBoardingSteps.length - 1">Next</button>
+<div [@animSlider]="counter">
+  <div *ngIf="onBoardingSteps && onBoardingSteps.length > 0">
+    <div><img [src]="onBoardingSteps[counter].img" alt="Image"></div>
+    <h3>{{ onBoardingSteps[counter].title }}</h3>
+    <p>{{ onBoardingSteps[counter].descripcion }}</p>
+  </div>
+</div> -->

@@ -1,0 +1,44 @@
+<!-- escena.component.html -->
+
+<div class="p-3">
+  <div class="card rounded-5">
+    <div [@animSlider]="counter">
+      <ng-container *ngFor="let img of onBoardingSteps; let i=index">
+        <div *ngIf="i===counter">
+          <div [ngClass]="{'bg-primary': counter === 0, 'bg-secondary': counter === 1, 'bg-success': counter === 2}"
+            class="py-3 d-flex justify-content-center align-items-center container-img">
+            <img [src]="onBoardingSteps[counter].img" alt="Image" class="img-fluid py-5">
+          </div>
+          <div class="p-3">
+            <h2 class="h5 pt-3">{{ onBoardingSteps[counter].title }}</h2>
+            <p>{{ onBoardingSteps[counter].descripcion }}</p>
+          </div>
+        </div>
+      </ng-container>
+    </div>
+
+    <div class="d-flex justify-content-between align-items-center p-3 pb-5 container-footer" style="margin-top: auto;">
+      <!-- dot -->
+      <div class="pagination">
+        <span class="dot" *ngFor="let step of onBoardingSteps; let i = index" [class.active]="i === counter"
+          (click)="changeStep(i)"></span>
+      </div>
+
+      <!-- botones -->
+      <div class="d-flex justify-content-center align-items-center gap-2">
+        <!-- Botón Previous -->
+        <button type="button" *ngIf="counter !== 0" class="btn btn-outline-dark rounded-circle" (click)="onPrevious()"
+          style="font-size: 2rem; line-height: 0; height: 4rem; width: 4rem; display: flex;justify-content: center;align-items: center;">
+          <span style="margin-bottom: 3px;">&#8592;</span>
+        </button>
+
+        <!-- Botón Next -->
+        <button type="button" *ngIf="counter !== onBoardingSteps.length - 1" class="btn btn-dark rounded-circle p-3"
+          (click)="onNext()"
+          style="font-size: 2rem; line-height: 0; height: 4rem; width: 4rem; display: flex;justify-content: center;align-items: center;">
+          <span style="margin-bottom: 3px;">&#8594;</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
